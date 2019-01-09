@@ -302,6 +302,26 @@ static ssize_t disp_param_store(struct device *device,
 	return count;
 }
 
+static ssize_t hbm_status_show(struct device *device,
+			   struct device_attribute *attr,
+			   char *buf)
+{
+	struct drm_connector *connector = to_drm_connector(device);
+	struct drm_device *dev = connector->dev;
+
+	return snprintf(buf, PAGE_SIZE, "%d\n", dev->hbm_status);
+}
+
+static ssize_t elvss_status_show(struct device *device,
+                           struct device_attribute *attr,
+                           char *buf)
+{
+        struct drm_connector *connector = to_drm_connector(device);
+        struct drm_device *dev = connector->dev;
+
+        return snprintf(buf, PAGE_SIZE, "%d\n", dev->elvss_status);
+}
+
 static DEVICE_ATTR_RW(status);
 static DEVICE_ATTR_RO(enabled);
 static DEVICE_ATTR_RO(dpms);
@@ -309,6 +329,8 @@ static DEVICE_ATTR_RO(modes);
 static DEVICE_ATTR_RO(panel_info);
 static DEVICE_ATTR_WO(disp_param);
 static DEVICE_ATTR_RO(doze_brightness);
+static DEVICE_ATTR_RO(hbm_status);
+static DEVICE_ATTR_RO(elvss_status);
 
 static struct attribute *connector_dev_attrs[] = {
 	&dev_attr_status.attr,
@@ -318,6 +340,8 @@ static struct attribute *connector_dev_attrs[] = {
 	&dev_attr_panel_info.attr,
 	&dev_attr_disp_param.attr,
 	&dev_attr_doze_brightness.attr,
+	&dev_attr_hbm_status.attr,
+    	&dev_attr_elvss_status.attr,
 	NULL
 };
 

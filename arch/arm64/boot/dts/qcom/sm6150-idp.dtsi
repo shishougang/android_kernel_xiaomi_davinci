@@ -18,11 +18,11 @@
 #include "sm6150-sde-display.dtsi"
 #include <dt-bindings/clock/qcom,gcc-sm6150.h>
 
-&qupv3_se3_i2c {
+/*&qupv3_se3_i2c {
 	status = "ok";
 	#include "smb1390.dtsi"
 	#include "smb1355.dtsi"
-};
+};*/
 
 &pm6150l_gpios {
 	key_vol_up {
@@ -365,6 +365,15 @@
 	qcom,mdss-dsi-bl-max-level = <4095>;
 	qcom,platform-te-gpio = <&tlmm 90 0>;
 	qcom,platform-reset-gpio = <&tlmm 91 0>;
+};
+
+&dsi_tianma_fhd_nt36672a_video {
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+	qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
+    qcom,mdss-dsi-bl-min-level = <1>;
+    qcom,mdss-dsi-bl-max-level = <4095>;
+    qcom,platform-te-gpio = <&tlmm 90 0>;
+    qcom,platform-reset-gpio = <&tlmm 91 0>;
 };
 
 &dsi_rm69298_truly_amoled_video {

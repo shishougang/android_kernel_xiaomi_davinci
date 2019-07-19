@@ -262,7 +262,6 @@ int32_t cam_context_release_dev_to_hw(struct cam_context *ctx,
 	ctx->session_hdl = -1;
 	ctx->dev_hdl = -1;
 	ctx->link_hdl = -1;
-	ctx->last_flush_req = 0;
 
 	return 0;
 }
@@ -492,8 +491,9 @@ int32_t cam_context_prepare_dev_to_hw(struct cam_context *ctx,
 			ctx->dev_name, ctx->ctx_id);
 
 	return rc;
+
 put_ctx_ref:
-	for (j; j >= 0; j--)
+	for (/*--j*/; j >= 0; j--)
 		cam_context_putref(ctx);
 put_ref:
 	for (--i; i >= 0; i--) {

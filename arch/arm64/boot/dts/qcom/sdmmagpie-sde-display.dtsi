@@ -27,6 +27,7 @@
 #include "dsi-panel-nt35695b-truly-fhd-cmd.dtsi"
 #include "dsi-panel-ss-fhd-ea-f10-cmd.dtsi"
 #include "dsi-panel-ss-fhd-eb-f10-cmd.dtsi"
+#include "dsi-panel-samsung-fhd-ea8076-f3b-cmd.dtsi"
 #include <dt-bindings/clock/mdss-10nm-pll-clk.h>
 
 &soc {
@@ -300,7 +301,18 @@
 		qcom,dsi-panel = <&dsi_ss_fhd_ea_f10_cmd>;
 	};
 
-	dsi_ss_fhd_eb_f10_cmd_display: qcom,dsi-display@18 {
+	dsi_samsung_fhd_ea8076_f3b_cmd_display: qcom,dsi-display@18 {
+		label = "samsung_fhd_ea8076_f3b_cmd_display";
+		qcom,display-type = "primary";
+
+ 		qcom,dsi-ctrl-num = <0>;
+		qcom,dsi-phy-num = <0>;
+		qcom,dsi-select-clocks = "mux_byte_clk0", "mux_pixel_clk0";
+
+ 		qcom,dsi-panel = <&dsi_samsung_fhd_ea8076_f3b_cmd>;
+	};
+
+	dsi_ss_fhd_eb_f10_cmd_display: qcom,dsi-display@19 {
 
 		label = "dsi_ss_fhd_eb_f10_cmd_display";
 		qcom,display-type = "primary";
